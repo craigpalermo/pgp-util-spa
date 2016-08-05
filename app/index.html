@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
     <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="app.css">
 
@@ -35,38 +34,61 @@
         openpgp.config.aead_protect = true;
     </script>
 </head>
-<body class="container">
-<div class="row">
-    <div class="col-xs-12">
-        <div class="page-header">
-            <h1>PGP Utility</h1>
+<body>
+<!-- top nav/menu bar-->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">PGP Utility</a>
         </div>
 
-        <ul class="nav nav-tabs nav-justified">
-            <li role="presentation" ng-class="{'active': mode === 'encrypt'}"><a href="#!/encrypt">Encrypt</a></li>
-            <li role="presentation" ng-class="{'active': mode === 'decrypt'}"><a href="#!/decrypt">Decrypt</a></li>
-        </ul>
-
-        <!-- content goes here -->
-        <div ng-view></div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li ng-class="{'active': isActive('/encrypt')}"><a href="#/encrypt">Encrypt</a></li>
+                <li ng-class="{'active': isActive('/decrypt')}"><a href="#/decrypt">Decrypt</a></li>
+                <li ng-class="{'active': isActive('/about')}"><a href="#/about">About</a></li>
+            </ul>
+        </div>
     </div>
+</nav>
+
+<!-- content -->
+<div class="container" ng-controller="mainCtrl as main">
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- content goes here -->
+            <div ng-view></div>
+        </div>
+    </div>
+
+    <!--[if lt IE 7]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+        your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!--<div>Angular seed app: v<span app-version></span></div>-->
 </div>
-
-<!--[if lt IE 7]>
-<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-    your browser</a> to improve your experience.</p>
-<![endif]-->
-
-<!--<div>Angular seed app: v<span app-version></span></div>-->
 
 <!-- In production use:
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
 -->
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
+
 <script src="app.js"></script>
-<script src="encrypt/view1.js"></script>
-<script src="decrypt/view2.js"></script>
+<script src="mainCtrl.js"></script>
+<script src="encrypt/encryptCtrl.js"></script>
+<script src="about/aboutCtrl.js"></script>
+
 <script src="components/version/version.js"></script>
 <script src="components/version/version-directive.js"></script>
 <script src="components/version/interpolate-filter.js"></script>

@@ -1,7 +1,14 @@
 <div ng-controller="encryptCtrl as ctrl">
     <div class="row">
         <div class="col-xs-12">
-            <h2 ng-bind="ctrl.conf.titles.page"></h2>
+            <h2 ng-bind="ctrl.conf.page"></h2>
+        </div>
+    </div>
+
+    <!-- error message -->
+    <div class="row" ng-if="ctrl.error">
+        <div class="col-xs-12">
+            <div class="alert alert-danger" ng-bind="ctrl.error"></div>
         </div>
     </div>
 
@@ -9,33 +16,33 @@
     <div class="row">
         <!-- input -->
         <div class="col-xs-12 col-sm-4">
-            <div class="panel panel-default">
+            <div class="panel panel-default pane">
                 <div class="panel-heading">
-                    <h3 class="panel-title" ng-bind="ctrl.conf.titles.input"></h3>
+                    <h3 class="panel-title" ng-bind="ctrl.conf.input"></h3>
                 </div>
                 <div class="panel-body">
-                    <textarea class="form-control" rows="8" ng-model="ctrl.input"></textarea>
+                    <textarea class="form-control" ng-model="ctrl.input" rows="8" placeholder="{{ ctrl.conf.inputPlaceholder }}"></textarea>
                 </div>
             </div>
         </div>
 
         <!-- key -->
         <div class="col-xs-12 col-sm-4">
-            <div class="panel panel-default">
+            <div class="panel panel-default pane">
                 <div class="panel-heading">
-                    <h3 class="panel-title" ng-bind="ctrl.conf.titles.keyType"></h3>
+                    <h3 class="panel-title" ng-bind="ctrl.conf.keyType"></h3>
                 </div>
                 <div class="panel-body">
-                    <textarea class="form-control" rows="8" ng-model="ctrl.key"></textarea>
+                    <textarea class="form-control" ng-model="ctrl.key" rows="8" placeholder="{{ ctrl.conf.keyPlaceholder }}"></textarea>
                 </div>
             </div>
         </div>
 
         <!-- output -->
         <div class="col-xs-12 col-sm-4">
-            <div class="panel panel-default">
+            <div class="panel panel-default pane">
                 <div class="panel-heading">
-                    <h3 class="panel-title" ng-bind="ctrl.conf.titles.output"></h3>
+                    <h3 class="panel-title" ng-bind="ctrl.conf.output"></h3>
                 </div>
                 <div class="panel-body">
                     <!-- loading spinner -->
@@ -43,8 +50,16 @@
                         <i class="fa fa-spin fa-spinner"></i>
                     </div>
 
-                    <textarea class="form-control" rows="8" ng-model="ctrl.output" ng-readonly="true"></textarea>
+                    <textarea class="form-control" ng-model="ctrl.output" rows="8" ng-readonly="true"></textarea>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="made-by">
+                Built by Craig Palermo, {{ main.today }}
             </div>
         </div>
     </div>
