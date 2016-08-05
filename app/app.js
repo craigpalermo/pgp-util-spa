@@ -5,6 +5,7 @@ angular.module('pgpApp', [
   'ngRoute',
   'pgpApp.mainCtrl',
   'pgpApp.encrypt',
+  'pgpApp.decrypt',
   'pgpApp.about',
   'pgpApp.version'
 ]).

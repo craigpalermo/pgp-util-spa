@@ -1,15 +1,15 @@
 'use strict';
 
-angular.module('pgpApp.encrypt', ['ngRoute'])
+angular.module('pgpApp.decrypt', ['ngRoute'])
 
   .config(['$routeProvider', function ($routeProvider) {
-    $routeProvider.when('/encrypt', {
-      templateUrl: 'encrypt/encrypt.html',
-      controller: 'encryptCtrl',
+    $routeProvider.when('/decrypt', {
+      templateUrl: 'decrypt/decrypt.html',
+      controller: 'decryptCtrl',
     });
   }])
 
-  .controller('encryptCtrl', [
+  .controller('decryptCtrl', [
     '$scope',
     function ($scope) {
       const self = this;
@@ -20,20 +20,21 @@ angular.module('pgpApp.encrypt', ['ngRoute'])
        */
 
       /**
-       * Encrypts the given cleartext using pubKey as the recipient. Returns a promise
-       * that will return the ciphertext.
-       * @param cleartext
-       * @param pubKey
-       * @returns {Promise}
+       * Decrypts the given ciphertext as the recipient privKey. Returns a promise
+       * that will return a cleartext message if successful.
+       * @param ciphertext
+       * @param privKey
+       * @returns {*}
        */
-      function pgpEncrypt(cleartext, pubKey) {
+      function pgpDecrypt(ciphertext, privKey) {
         const options = {
-          data: cleartext,
-          publicKeys: openpgp.key.readArmored(pubKey).keys,
+          message: openpgp.message.readArmored(ciphertext),
+          privateKey: openpgp.key.readArmored(privKey).keys[0],
         };
 
-        return openpgp.encrypt(options).then((ciphertext) => {
-          return ciphertext.data;
+        console.info('Beginning decryption, please wait...');
+        return openpgp.decrypt(options).then(function (plaintext) {
+          return plaintext.data;
         });
       }
 
@@ -46,11 +47,11 @@ angular.module('pgpApp.encrypt', ['ngRoute'])
        * Encrypt or decrypt depending on the current mode. Turn off loading flags and
        * set output model once promise resolves. Show error message if operation fails.
        */
-      self.encrypt = function encrypt() {
+      self.decrypt = function decrypt() {
         const {key, input}= self;
         self.isLoading = true;
 
-        pgpEncrypt(input, key).then((output) => {
+        pgpDecrypt(input, key).then((output) => {
           console.info('Processing successful');
 
           self.output = output;
@@ -71,7 +72,7 @@ angular.module('pgpApp.encrypt', ['ngRoute'])
       // Try to encrypt/decrypt when inputs change if both are populated
       ['input', 'key'].map(x => $scope.$watch(`ctrl.${x}`, () => {
         if (angular.isString(self.input) && angular.isString(self.key)) {
-          self.encrypt();
+          self.decrypt();
         } else {
           self.output = '';
         }
@@ -79,12 +80,11 @@ angular.module('pgpApp.encrypt', ['ngRoute'])
 
       // Configuration variables
       self.conf = {
-        page: 'Encrypt',
-        input: 'Cleartext Message',
-        inputPlaceholder: 'They who can give up essential liberty to obtain a little ' +
-        'temporary safety deserve neither liberty nor safety.\n\n - Benjamin Franklin',
-        keyType: 'Public',
-        keyPlaceholder: "-----BEGIN PGP PUBLIC KEY BLOCK-----\n...\n-----END PGP PUBLIC KEY BLOCK-----",
-        output: 'Ciphertext',
+        page: 'Decrypt',
+        input: 'Ciphertext',
+        inputPlaceholder: "-----BEGIN PGP MESSAGE-----\n...\n-----END PGP MESSAGE-----",
+        keyPlaceholder: "-----BEGIN PGP PRIVATE KEY BLOCK-----\n...\n-----END PGP PRIVATE KEY BLOCK-----",
+        keyType: 'Private',
+        output: 'Cleartext Message',
       };
     }]);
