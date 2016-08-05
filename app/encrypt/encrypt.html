@@ -17,11 +17,16 @@
     <div class="col-xs-12 col-sm-6 col-xl-4">
         <div class="panel panel-default pane">
             <div class="panel-heading">
-                <h3 class="panel-title" ng-bind="ctrl.conf.input"></h3>
+                <span>
+                    <h3 class="panel-title" ng-bind="ctrl.conf.input"></h3>
+                    <i class="fa fa-question-circle pull-right" uib-tooltip="{{ ctrl.conf.inputTooltip }}" tooltip-placement="bottom"></i>
+                </span>
+
+                <i class="fa fa-times-circle-o" ng-click="ctrl.input = ''"></i>
             </div>
             <div class="panel-body">
                 <textarea class="form-control" ng-model="ctrl.input" rows="8"
-                          placeholder="{{ ctrl.conf.inputPlaceholder }}"></textarea>
+                          placeholder="{{ ctrl.conf.inputPlaceholder }}" ng-model-options="{debounce: 600}"></textarea>
             </div>
         </div>
     </div>
@@ -30,7 +35,12 @@
     <div class="col-xs-12 col-sm-6 col-xl-4">
         <div class="panel panel-default pane">
             <div class="panel-heading">
-                <h3 class="panel-title" ng-bind="ctrl.conf.keyType"></h3>
+                <span>
+                    <h3 class="panel-title" ng-bind="ctrl.conf.keyType"></h3>
+                    <i class="fa fa-question-circle pull-right" uib-tooltip="{{ ctrl.conf.keyTooltip }}" tooltip-placement="bottom"></i>
+                </span>
+
+                <i class="fa fa-times-circle-o" ng-click="ctrl.key = ''"></i>
             </div>
             <div class="panel-body">
                 <textarea class="form-control" ng-model="ctrl.key" rows="8"

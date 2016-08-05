@@ -82,10 +82,12 @@ angular.module('pgpApp.encrypt', ['ngRoute'])
       self.conf = {
         page: 'Encrypt',
         input: 'Cleartext Message',
+        inputTooltip: 'Enter message to encrypt here',
         inputPlaceholder: 'They who can give up essential liberty to obtain a little ' +
         'temporary safety deserve neither liberty nor safety.\n\n - Benjamin Franklin',
         keyType: 'Public',
         keyPlaceholder: "-----BEGIN PGP PUBLIC KEY BLOCK-----\n...\n-----END PGP PUBLIC KEY BLOCK-----",
+        keyTooltip: "Enter the recipient's public key here",
         output: 'Ciphertext',
       };
     }]);

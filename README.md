@@ -9,3 +9,4 @@ Built on [openpgpjs](https://github.com/openpgpjs/openpgpjs), pgp.js is a simple
 - File support (?)
 - Add AirBnB ESLint profile
 - CSS -> LESS
+- Improve support for longer key lengths

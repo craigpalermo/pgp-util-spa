@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
     <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -53,9 +53,14 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li ng-class="{'active': isActive('/encrypt')}"><a href="#/encrypt">Encrypt</a></li>
-                <li ng-class="{'active': isActive('/decrypt')}"><a href="#/decrypt">Decrypt</a></li>
-                <li ng-class="{'active': isActive('/about')}"><a href="#/about">About</a></li>
+                <li ng-class="{'active': isActive('/encrypt')}">
+                    <a href="#/encrypt"><i class="fa fa-lock"></i> Encrypt</a>
+                </li>
+                <li ng-class="{'active': isActive('/decrypt')}">
+                    <a href="#/decrypt"><i class="fa fa-unlock"></i> Decrypt</a>
+                </li>
+                <li ng-class="{'active': isActive('/about')}">
+                    <a href="#/about"><i class="fa info"></i> About</a></li>
             </ul>
         </div>
     </div>
@@ -83,6 +88,7 @@
 -->
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 
 <script src="app.js"></script>
 <script src="mainCtrl.js"></script>

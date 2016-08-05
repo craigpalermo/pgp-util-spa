@@ -83,9 +83,11 @@ angular.module('pgpApp.decrypt', ['ngRoute'])
       self.conf = {
         page: 'Decrypt',
         input: 'Ciphertext',
+        inputTooltip: 'Enter the message to decrypt here',
         inputPlaceholder: "-----BEGIN PGP MESSAGE-----\n...\n-----END PGP MESSAGE-----",
         keyPlaceholder: "-----BEGIN PGP PRIVATE KEY BLOCK-----\n...\n-----END PGP PRIVATE KEY BLOCK-----",
         keyType: 'Private',
+        keyTooltip: "Enter the recipient's private key here",
         output: 'Cleartext Message',
       };
     }]);

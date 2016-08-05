@@ -16,3 +16,25 @@
     top: 0;
     width: 100%;
 }
+
+/* input panels */
+.panel-heading,
+.panel-heading > span {
+    align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+.panel-heading i {
+    font-size: 18px;
+}
+.panel-heading .fa-times-circle-o {
+    transition: color .15s;
+}
+.panel-heading .fa-times-circle-o:hover {
+    color: #ff00e3;
+    cursor: pointer;
+}
+.panel-heading .fa-question-circle {
+    opacity: .5;
+}

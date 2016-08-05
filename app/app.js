@@ -7,7 +7,8 @@ angular.module('pgpApp', [
   'pgpApp.encrypt',
   'pgpApp.decrypt',
   'pgpApp.about',
-  'pgpApp.version'
+  'pgpApp.version',
+  'ui.bootstrap',
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $routeProvider.otherwise({redirectTo: '/encrypt'});
