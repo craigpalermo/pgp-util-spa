@@ -1,66 +1,66 @@
-<div ng-controller="encryptCtrl as ctrl">
-    <div class="row">
-        <div class="col-xs-12">
-            <h2 ng-bind="ctrl.conf.page"></h2>
-        </div>
+<div class="row">
+    <div class="col-xs-12">
+        <h2 ng-bind="ctrl.conf.page"></h2>
     </div>
+</div>
 
-    <!-- error message -->
-    <div class="row" ng-if="ctrl.error">
-        <div class="col-xs-12">
-            <div class="alert alert-danger" ng-bind="ctrl.error"></div>
-        </div>
+<!-- error message -->
+<div class="row" ng-if="ctrl.error">
+    <div class="col-xs-12">
+        <div class="alert alert-danger" ng-bind="ctrl.error"></div>
     </div>
+</div>
 
-    <!-- input fields -->
-    <div class="row">
-        <!-- input -->
-        <div class="col-xs-12 col-sm-4">
-            <div class="panel panel-default pane">
-                <div class="panel-heading">
-                    <h3 class="panel-title" ng-bind="ctrl.conf.input"></h3>
-                </div>
-                <div class="panel-body">
-                    <textarea class="form-control" ng-model="ctrl.input" rows="8" placeholder="{{ ctrl.conf.inputPlaceholder }}"></textarea>
-                </div>
+<!-- input fields -->
+<div class="row">
+    <!-- input -->
+    <div class="col-xs-12 col-sm-6 col-xl-4">
+        <div class="panel panel-default pane">
+            <div class="panel-heading">
+                <h3 class="panel-title" ng-bind="ctrl.conf.input"></h3>
             </div>
-        </div>
-
-        <!-- key -->
-        <div class="col-xs-12 col-sm-4">
-            <div class="panel panel-default pane">
-                <div class="panel-heading">
-                    <h3 class="panel-title" ng-bind="ctrl.conf.keyType"></h3>
-                </div>
-                <div class="panel-body">
-                    <textarea class="form-control" ng-model="ctrl.key" rows="8" placeholder="{{ ctrl.conf.keyPlaceholder }}"></textarea>
-                </div>
-            </div>
-        </div>
-
-        <!-- output -->
-        <div class="col-xs-12 col-sm-4">
-            <div class="panel panel-default pane">
-                <div class="panel-heading">
-                    <h3 class="panel-title" ng-bind="ctrl.conf.output"></h3>
-                </div>
-                <div class="panel-body">
-                    <!-- loading spinner -->
-                    <div class="overlay-loading" ng-show="ctrl.isLoading">
-                        <i class="fa fa-spin fa-spinner"></i>
-                    </div>
-
-                    <textarea class="form-control" ng-model="ctrl.output" rows="8" ng-readonly="true"></textarea>
-                </div>
+            <div class="panel-body">
+                <textarea class="form-control" ng-model="ctrl.input" rows="8"
+                          placeholder="{{ ctrl.conf.inputPlaceholder }}"></textarea>
             </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="made-by">
-                Built by Craig Palermo, {{ main.today }}
+    <!-- key -->
+    <div class="col-xs-12 col-sm-6 col-xl-4">
+        <div class="panel panel-default pane">
+            <div class="panel-heading">
+                <h3 class="panel-title" ng-bind="ctrl.conf.keyType"></h3>
             </div>
+            <div class="panel-body">
+                <textarea class="form-control" ng-model="ctrl.key" rows="8"
+                          placeholder="{{ ctrl.conf.keyPlaceholder }}"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- output -->
+    <div class="col-xs-12 col-xl-4">
+        <div class="panel panel-default pane">
+            <div class="panel-heading">
+                <h3 class="panel-title" ng-bind="ctrl.conf.output"></h3>
+            </div>
+            <div class="panel-body">
+                <!-- loading spinner -->
+                <div class="overlay-loading" ng-show="ctrl.isLoading">
+                    <i class="fa fa-spin fa-spinner"></i>
+                </div>
+
+                <textarea class="form-control" ng-model="ctrl.output" rows="8" ng-readonly="true"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="made-by">
+            Built by Craig Palermo, {{ main.today }}
         </div>
     </div>
 </div>

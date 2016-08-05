@@ -6,6 +6,7 @@ angular.module('pgpApp.encrypt', ['ngRoute'])
     $routeProvider.when('/encrypt', {
       templateUrl: 'encrypt/encrypt.html',
       controller: 'encryptCtrl',
+      controllerAs: 'ctrl',
     });
   }])
 
