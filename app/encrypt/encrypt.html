@@ -19,14 +19,19 @@
             <div class="panel-heading">
                 <span>
                     <h3 class="panel-title" ng-bind="ctrl.conf.input"></h3>
-                    <i class="fa fa-question-circle pull-right" uib-tooltip="{{ ctrl.conf.inputTooltip }}" tooltip-placement="bottom"></i>
+                    <i class="fa fa-question-circle pull-right"
+                       uib-tooltip="{{ ctrl.conf.inputTooltip }}"
+                       tooltip-placement="bottom"></i>
                 </span>
 
                 <i class="fa fa-times-circle-o" ng-click="ctrl.input = ''"></i>
             </div>
             <div class="panel-body">
-                <textarea class="form-control" ng-model="ctrl.input" rows="8"
-                          placeholder="{{ ctrl.conf.inputPlaceholder }}" ng-model-options="{debounce: 600}"></textarea>
+                <textarea ng-model="ctrl.input"
+                          ng-model-options="{debounce: 600}"
+                          class="form-control"
+                          rows="8"
+                          placeholder="{{ ctrl.conf.inputPlaceholder }}"></textarea>
             </div>
         </div>
     </div>
@@ -37,14 +42,32 @@
             <div class="panel-heading">
                 <span>
                     <h3 class="panel-title" ng-bind="ctrl.conf.keyType"></h3>
-                    <i class="fa fa-question-circle pull-right" uib-tooltip="{{ ctrl.conf.keyTooltip }}" tooltip-placement="bottom"></i>
+                    <i class="fa fa-question-circle pull-right"
+                       uib-tooltip="{{ ctrl.conf.keyTooltip }}"
+                       tooltip-placement="bottom"></i>
                 </span>
 
                 <i class="fa fa-times-circle-o" ng-click="ctrl.key = ''"></i>
             </div>
             <div class="panel-body">
-                <textarea class="form-control" ng-model="ctrl.key" rows="8"
+                <!-- public/private key -->
+                <textarea ng-model="ctrl.key"
+                          class="form-control"
+                          rows="{{ ctrl.conf.keyInputRows || 8}}"
                           placeholder="{{ ctrl.conf.keyPlaceholder }}"></textarea>
+
+                <!-- key passphrase (only for decrypting) -->
+                <form class="form-inline passphrase-form" ng-if="ctrl.decrypt">
+                    <div class="form-group">
+                        <label for="keyPassphrase">Passphrase</label>
+                        <input ng-model="ctrl.passphrase"
+                               ng-model-options="{debounce: 600}"
+                               type="password"
+                               placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;"
+                               class="form-control"
+                               id="keyPassphrase">
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -61,7 +84,11 @@
                     <i class="fa fa-spin fa-spinner"></i>
                 </div>
 
-                <textarea class="form-control" ng-model="ctrl.output" rows="8" ng-readonly="true"></textarea>
+                <textarea ng-model="ctrl.output"
+                          class="form-control"
+                          ng-readonly="true"
+                          rows="8">
+                </textarea>
             </div>
         </div>
     </div>

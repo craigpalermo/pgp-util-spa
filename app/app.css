@@ -38,3 +38,11 @@
 .panel-heading .fa-question-circle {
     opacity: .5;
 }
+
+.panel-body {
+    min-height: 204px;
+}
+
+.passphrase-form {
+    margin-top: 10px;
+}
