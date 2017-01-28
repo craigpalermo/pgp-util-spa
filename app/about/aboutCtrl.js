@@ -1,6 +1,8 @@
-'use strict';
+import 'angular';
 
-angular.module('pgpApp.about', ['ngRoute'])
+const MODULE_NAME = 'pgpApp.about';
+
+const aboutCtrl = angular.module(MODULE_NAME, [])
 
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/about', {
@@ -13,3 +15,7 @@ angular.module('pgpApp.about', ['ngRoute'])
     '$rootScope',
     function () {
     }]);
+
+aboutCtrl.name = MODULE_NAME;
+
+export default aboutCtrl;

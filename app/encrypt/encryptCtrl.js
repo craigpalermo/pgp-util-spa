@@ -1,6 +1,8 @@
-'use strict';
+import 'angular';
 
-angular.module('pgpApp.encrypt', ['ngRoute'])
+const MODULE_NAME = 'pgpApp.encrypt';
+
+const encryptCtrl = angular.module(MODULE_NAME, [])
 
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/encrypt', {
@@ -91,3 +93,8 @@ angular.module('pgpApp.encrypt', ['ngRoute'])
         output: 'Ciphertext',
       };
     }]);
+
+
+encryptCtrl.name = MODULE_NAME;
+
+export default encryptCtrl;

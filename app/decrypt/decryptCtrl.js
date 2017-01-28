@@ -1,6 +1,8 @@
-'use strict';
+import 'angular';
 
-angular.module('pgpApp.decrypt', ['ngRoute'])
+const MODULE_NAME = 'pgpApp.decrypt';
+
+const decryptCtrl = angular.module(MODULE_NAME, [])
 
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/decrypt', {
@@ -106,3 +108,7 @@ angular.module('pgpApp.decrypt', ['ngRoute'])
         keyInputRows: 5,
       };
     }]);
+
+decryptCtrl.name = MODULE_NAME;
+
+export default decryptCtrl;

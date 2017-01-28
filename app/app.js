@@ -1,15 +1,23 @@
-'use strict';
+// Angular
+import 'angular';
+import 'angular-route';
 
-// Declare app level module which depends on views, and components
+// 3rd party
+import 'angular-ui-bootstrap';
+
+// Routes
+import mainCtrl from './mainCtrl';
+import encryptCtrl from './encrypt/encryptCtrl';
+import decryptCtrl from './decrypt/decryptCtrl';
+import aboutCtrl from './about/aboutCtrl';
+
 angular.module('pgpApp', [
   'ngRoute',
-  'pgpApp.mainCtrl',
-  'pgpApp.encrypt',
-  'pgpApp.decrypt',
-  'pgpApp.about',
-  'pgpApp.version',
   'ui.bootstrap',
-]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
+  mainCtrl.name,
+  encryptCtrl.name,
+  decryptCtrl.name,
+  aboutCtrl.name,
+]).config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
   $routeProvider.otherwise({redirectTo: '/encrypt'});
 }]);

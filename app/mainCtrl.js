@@ -1,6 +1,6 @@
-'use strict';
+import 'angular';
 
-angular.module('pgpApp.mainCtrl', ['ngRoute'])
+const mainCtrl = angular.module('pgpApp.main', [])
 
   .controller('mainCtrl', [
     '$scope',
@@ -20,3 +20,7 @@ angular.module('pgpApp.mainCtrl', ['ngRoute'])
       // Get year to display in footer
       self.today = new Date().getFullYear();
     }]);
+
+mainCtrl.name = 'pgpApp.main';
+
+export default mainCtrl;
